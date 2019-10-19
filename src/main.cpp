@@ -56,6 +56,8 @@ int main(int argc, const char **argv)
 
     // Build Model.
     RouteModel model{osm_data};
+
+    
     
     float start_x,start_y,end_x,end_y;
     //std::cout<<"Please Input `start_x`, `start_y`, `end_x`, and `end_y` "<<std::endl;

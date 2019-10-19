@@ -51,7 +51,6 @@ class RouteModel : public Model {
   private:
     void CreateNodeToRoadHashmap(void);
     
-
   public:
     std::unordered_map<int,std::vector<const Model::Road*>> &GetNodeToRoadMap(){
       return node_to_road;
