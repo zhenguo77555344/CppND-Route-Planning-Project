@@ -12,7 +12,7 @@ public:
         double x = 0.f;
         double y = 0.f;
     };
-    
+    //index of Road ?
     struct Way {
         std::vector<int> nodes;
     };
