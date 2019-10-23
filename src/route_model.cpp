@@ -50,6 +50,7 @@ void RouteModel::CreateNodeToRoadHashmap(void){
     }
 }
 
+/*
 RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices){
     Node* closest_node = nullptr;
 
@@ -66,8 +67,8 @@ RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices){
     }
     return closest_node;
 }
+*/
 
-/*
 RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices){
     Node* closest_node = nullptr;
     float minDistance = std::numeric_limits<float>::max();
@@ -75,16 +76,21 @@ RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices){
     auto nodelist = parent_model->SNodes();
 
     for(int index:node_indices){
+
         if(nodelist[index].visited== false){
+
             float currentDist = distance(nodelist[index]);
+
             if(currentDist < minDistance && currentDist !=0){
+
                 minDistance = currentDist;
                 closest_node =&nodelist[index]; 
             }
         }
     }
+    return closest_node;
 }
-*/
+
 
 void RouteModel::Node::FindNeighbors(void){ 
     //Node* node= &parent_model->node_to_road[this->index];
@@ -115,5 +121,4 @@ RouteModel::Node& RouteModel::FindClosestNode(float x, float y){
     } 
     return SNodes()[closest_idx];
 }
-
 
