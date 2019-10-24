@@ -47,7 +47,7 @@ Exercises with tests will specify which string to pass with `-DTESTING`, but a t
 | Exercise Name               | `-DTESTING` String Value |
 |-----------------------------|:------------------------:|
 | Fill Out Route Model        |       "RouteModel"       |
-| Fill Out Node Class         |       "RMNodeClass"      |
+| Fill Out Node Class         |       "RMNodeClass"      |AA
 | Create RouteModel Nodes     |        "RMSNodes"        |
 | Write the Distance Function |        "NodeDist"        |
 | Create Road to Node Hashmap |       "NodeToRoad"       |
