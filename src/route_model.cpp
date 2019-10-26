@@ -91,18 +91,51 @@ RouteModel::Node* RouteModel::Node::FindNeighbor(std::vector<int> node_indices){
     return closest_node;
 }
 
-
+/*
 void RouteModel::Node::FindNeighbors(void){ 
     //Node* node= &parent_model->node_to_road[this->index];
     for(auto road:parent_model->node_to_road[this->index]){
         //Node* pNode = FindNeighbor(road->way);
         Node* pNode = FindNeighbor(parent_model->Ways()[road->way].nodes);
         if(pNode!=nullptr){
-            this->neighbors.push_back(pNode);
-            //this->neighbors.emplace_back(pNode);
+            //this->neighbors.push_back(pNode);
+            this->neighbors.emplace_back(pNode);
         }
     }
 }
+*/
+
+void RouteModel::Node::FindNeighbors(void)
+{
+	/* Get all of the roads that the current node belongs to */
+    //parent_model->node_to_road[this->index];
+
+
+	for (auto& road : parent_model->node_to_road[this->index])
+	{
+		/* Access all the indices of the nodes on that road and find the closest one */
+		auto* new_neighbor = this->FindNeighbor(parent_model->Ways()[road->way].nodes);
+        
+        std::cout<<"new_neighbor->(x,y)="<<new_neighbor->x<<","<<new_neighbor->y<<std::endl;
+
+
+		/* We find a new neighbor, so add it to our neighbors*/
+		if (new_neighbor)
+		{
+			//this->neighbors.emplace_back(new_neighbor);
+            this->neighbors.push_back(new_neighbor);
+                   
+		}
+        
+	}
+
+    std::cout<<"this->neighbors.size()="<<this->neighbors.size()<<std::endl;
+    std::cout<<"this->neighbors.[0]->(x,y)="<<this->neighbors[0]->x<<","<<this->neighbors[0]->y<<std::endl;
+    std::cout<<"this->neighbors.[1]->(x,y)="<<this->neighbors[1]->x<<","<<this->neighbors[1]->y<<std::endl;
+
+    
+}
+
 
 RouteModel::Node& RouteModel::FindClosestNode(float x, float y){
     Node node_temp;
