@@ -5,7 +5,7 @@
 #include <vector>
 #include "../src/route_model.h"
 #include "../src/route_planner.h"
-
+using namespace std;
 
 static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
 {   
@@ -73,7 +73,7 @@ TEST_F(RouteModelTest, NodeDistance) {
 
 // Test the data created by CreateNodeToRoadHashmap.
 TEST_F(RouteModelTest, NodeToRoad) {
-    auto node_to_road = model.GetNodeToRoadMap();
+    auto node_to_road = model.get_node_to_roadmap();
     EXPECT_EQ(node_to_road[0].size(), 2);
     EXPECT_EQ(node_to_road[30].size(), 2);
     EXPECT_EQ(node_to_road[90].size(), 2);
@@ -84,17 +84,23 @@ TEST_F(RouteModelTest, NodeToRoad) {
 
 // Test the FindNeighbors method.
 TEST_F(RouteModelTest, FindNeighbors) {
-    auto test_node = model.SNodes()[0];
-    test_node.FindNeighbors();
+    RouteModel::Node test_node = model.SNodes()[0];
+    test_node.find_neighbors();
     EXPECT_EQ(test_node.neighbors.size(), 2);
     EXPECT_FLOAT_EQ(test_node.neighbors[1]->x, 1.3250526);
     EXPECT_FLOAT_EQ(test_node.neighbors[1]->y, 0.41849667);
     test_node.neighbors.clear(); // Clear out neighbors just added.
+
     test_node = model.SNodes()[100];
-    test_node.FindNeighbors();
+    test_node.find_neighbors();
     EXPECT_EQ(test_node.neighbors.size(), 2);
     EXPECT_FLOAT_EQ(test_node.neighbors[0]->x, 0.77367586);
     EXPECT_FLOAT_EQ(test_node.neighbors[0]->y, 0.52004427);
+    test_node.neighbors.clear();
+
+    test_node.x = 0.135582;
+    test_node.y = 0.154693;
+    test_node.find_neighbors();
     test_node.neighbors.clear();
 }
 
@@ -102,13 +108,13 @@ TEST_F(RouteModelTest, FindNeighbors) {
 TEST_F(RouteModelTest, FindClosestNode) {
     float x = 0.023456;
     float y = 0.567890;
-    auto& test_node = model.FindClosestNode(x, y);
+    auto& test_node = model.find_closest_node(x, y);
     EXPECT_EQ(&test_node, &model.SNodes()[10155]);
     EXPECT_FLOAT_EQ(test_node.x, 0.030928569);
     EXPECT_FLOAT_EQ(test_node.y, 0.58042318);
     x = 0.555555;
     y = 0.333333;
-    auto& test_node_2 = model.FindClosestNode(x, y);
+    auto& test_node_2 = model.find_closest_node(x, y);
     EXPECT_EQ(&test_node_2, &model.SNodes()[600]);
     EXPECT_FLOAT_EQ(test_node_2.x, 0.58249766);
     EXPECT_FLOAT_EQ(test_node_2.y, 0.34965551);
@@ -130,8 +136,8 @@ class RoutePlannerTest : public ::testing::Test {
     float start_y = 0.1;
     float end_x = 0.9;
     float end_y = 0.9;
-    RouteModel::Node* start_node = &model.FindClosestNode(start_x, start_y);
-    RouteModel::Node* end_node = &model.FindClosestNode(end_x, end_y);
+    RouteModel::Node* start_node = &model.find_closest_node(start_x, start_y);
+    RouteModel::Node* end_node = &model.find_closest_node(end_x, end_y);
 };
 
 

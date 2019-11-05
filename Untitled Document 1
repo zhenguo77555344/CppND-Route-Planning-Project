@@ -1,0 +1,57 @@
+###This should be the right one
+start_node(x,y)=0.118204,0.10592
+current_node->(x,y)=0.118204,0.10592
+new_neighbor is:0.0166568,0.138725
+new_neighbor is:0.197179,0.0803975
+new_neighbor is:0.135582,0.154693
+new_neighbor is:0.10121,0.053305
+neighbor->(h_value,h_value),H+G=1.18285,0.106714,1.28956
+neighbor->(h_value,h_value),H+G=1.09981,0.0829972,1.18281
+neighbor->(h_value,h_value),H+G=1.0858,0.0517769,1.13758
+neighbor->(h_value,h_value),H+G=1.18312,0.0552911,1.23841
+current_node->(x,y)=0.135582,0.154693
+new_neighbor is:0.145228,0.151564
+new_neighbor is:0.153931,0.210883
+neighbor->(h_value,h_value),H+G=1.08131,0.0619176,1.14323
+neighbor->(h_value,h_value),H+G=1.0332,0.110887,1.14409
+current_node->(x,y)=0.145228,0.151564
+new_neighbor is:0.124272,0.158145
+neighbor->(h_value,h_value),H+G=1.09132,0.0838824,1.1752
+current_node->(x,y)=0.153931,0.210883
+new_neighbor is:0.257498,0.175339
+new_neighbor is:0.0502205,0.24262
+new_neighbor is:0.169799,0.259446
+neighbor->(h_value,h_value),H+G=0.988284,0.220383,1.20867
+neighbor->(h_value,h_value),H+G=1.08983,0.219345,1.30918
+neighbor->(h_value,h_value),H+G=0.988324,0.161976,1.1503
+current_node->(x,y)=0.169799,0.259446
+new_neighbor is:0.157807,0.263343
+new_neighbor is:0.187081,0.312373
+neighbor->(h_value,h_value),H+G=0.994564,0.174586,1.16915
+neighbor->(h_value,h_value),H+G=0.940146,0.217654,1.1578
+current_node->(x,y)=0.187081,0.312373
+new_neighbor is:0.142602,0.326727
+new_neighbor is:0.193361,0.331605
+new_neighbor is:0.238946,0.295647
+neighbor->(h_value,h_value),H+G=0.965131,0.264392,1.22952
+neighbor->(h_value,h_value),H+G=0.922849,0.237884,1.16073
+neighbor->(h_value,h_value),H+G=0.913164,0.272149,1.18531
+current_node->(x,y)=0.193361,0.331605
+new_neighbor is:0.202728,0.328542
+new_neighbor is:0.198343,0.34686
+neighbor->(h_value,h_value),H+G=0.917731,0.247739,1.16547
+neighbor->(h_value,h_value),H+G=0.909213,0.253933,1.16315
+current_node->(x,y)=0.198343,0.34686
+new_neighbor is:0.207508,0.343676
+new_neighbor is:0.203411,0.362384
+neighbor->(h_value,h_value),H+G=0.904252,0.263636,1.16789
+neighbor->(h_value,h_value),H+G=0.895422,0.270263,1.16568
+current_node->(x,y)=0.202728,0.328542
+new_neighbor is:0.244668,0.314812
+neighbor->(h_value,h_value),H+G=0.895802,0.29187,1.18767
+current_node->(x,y)=0.203411,0.362384
+new_neighbor is:0.21247,0.359466
+new_neighbor is:0.207431,0.374677
+neighbor->(h_value,h_value),H+G=0.890291,0.27978,1.17007
+neighbor->(h_value,h_value),H+G=0.884556,0.283197,1.16775
+
