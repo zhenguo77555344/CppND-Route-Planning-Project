@@ -11,11 +11,8 @@ class RouteModel : public Model {
   public:
     class Node : public Model::Node {
       public:
-        // Add public Node variables and methods here.
         
         Node(){}
-        //Node(int idx, RouteModel * search_model, Model::Node node) : Model::Node(node), parent_model(search_model), index(idx) {}
-        //Node(int idx, RouteModel * search_model, Model::Node node) : index(idx),parent_model(search_model), Model::Node(node){}
         Node(int idx, RouteModel* search_model, Model::Node node);
         /*
         Node(int idx, RouteModel * search_model, Model::Node node){

@@ -23,15 +23,12 @@ void RoutePlanner::AStarSearch(){
     start_node->visited = true;
     open_list.emplace_back(start_node);
 
-    int i =0;
-
     while (!open_list.empty()){
 
-        i=i+1;
         // Find best next node for exploration
         RouteModel::Node* current_node = NextNode();//open_list
 
-        std::cout<<"current_node->(x,y)="<<current_node->x<<","<<current_node->y<<std::endl;
+        //std::cout<<"current_node->(x,y)="<<current_node->x<<","<<current_node->y<<std::endl;
 
         if(current_node->distance(*end_node) == 0 ){
             m_Model.path = ConstructFinalPath(end_node);
@@ -40,9 +37,6 @@ void RoutePlanner::AStarSearch(){
 
         //Otherwise, add current node to the neighbors
         AddNeighbors(current_node);//this function with issue
-       
-        //if(i==10)
-        //   break;
     }
 
 }// end of AStarSearch
