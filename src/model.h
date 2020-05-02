@@ -7,6 +7,11 @@
 
 class Model
 {
+
+public:
+    Model() = default;
+    Model( const std::vector<std::byte> &xml );
+    
 public:
     struct Node {
         double x = 0.f;
@@ -43,11 +48,9 @@ public:
         enum Type { Invalid, Commercial, Construction, Grass, Forest, Industrial, Railway, Residential };
         Type type;
     };
-    
-    Model( const std::vector<std::byte> &xml );
-    
+
+public:    
     auto MetricScale() const noexcept { return m_MetricScale; }    
-    
     auto &Nodes() const noexcept { return m_Nodes; }
     auto &Ways() const noexcept { return m_Ways; }
     auto &Roads() const noexcept { return m_Roads; }
@@ -61,7 +64,8 @@ private:
     void AdjustCoordinates();
     void BuildRings( Multipolygon &mp );
     void LoadData(const std::vector<std::byte> &xml);
-    
+
+private: 
     std::vector<Node> m_Nodes;
     std::vector<Way> m_Ways;
     std::vector<Road> m_Roads;

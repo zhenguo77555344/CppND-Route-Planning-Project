@@ -53,8 +53,7 @@ void RoutePlanner::AddNeighbors(RouteModel::Node* current_node){
         neighbor->h_value = CalculateHvalue(neighbor);
 
         open_list.emplace_back(neighbor);
-        neighbor->visited = true;
-        
+        neighbor->visited = true;    
         //std::cout<<"neighbor->(h_value,g_value),H+G= "<<neighbor->h_value <<","<<neighbor->g_value<<","<<neighbor->h_value+neighbor->g_value<<std::endl;  
     
     }

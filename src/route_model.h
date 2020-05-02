@@ -9,6 +9,9 @@ class RouteModel : public Model
 {
 
 public:
+    RouteModel(const std::vector<std::byte>& xml);	
+
+public:
 	class Node : public Model::Node {
 	public:
 
@@ -38,7 +41,7 @@ public:
 		
 	};
 
-	RouteModel(const std::vector<std::byte>& xml);
+	
 	Node& find_closest_node(float x, float y);
 
 	auto& SNodes(){

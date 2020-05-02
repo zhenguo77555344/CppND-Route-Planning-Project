@@ -49,10 +49,9 @@ Model::Model( const std::vector<std::byte> &xml )
 }
 
 void Model::LoadData(const std::vector<std::byte> &xml)
-{
-    using namespace pugi;
+{    
+    pugi::xml_document doc;
     
-    xml_document doc;
     if( !doc.load_buffer(xml.data(), xml.size()) )
         throw std::logic_error("failed to parse the xml file");
     
@@ -193,6 +192,7 @@ void Model::AdjustCoordinates()
     }
 }
 
+//Track Record?
 static bool TrackRec(const std::vector<int> &open_ways,
                      const Model::Way *ways,
                      std::vector<bool> &used,

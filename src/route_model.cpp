@@ -15,7 +15,7 @@ void RouteModel::Node::find_neighbors(void){
 		if (new_neighbor){
 			
             this->neighbors.push_back(new_neighbor);
-            std::cout<<"new_neighbor->(x,y)="<<new_neighbor->x<<","<<new_neighbor->y<<std::endl;
+            //std::cout<<"new_neighbor->(x,y)="<<new_neighbor->x<<","<<new_neighbor->y<<std::endl;
 
 		}
 	}    

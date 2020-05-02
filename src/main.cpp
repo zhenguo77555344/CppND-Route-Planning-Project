@@ -10,6 +10,8 @@
 
 using namespace std::experimental;
 
+#define ROUTE_BUTTON 1
+
 static std::optional<std::vector<std::byte>> ReadFile(const std::string &path)
 {   
     std::ifstream is{path, std::ios::binary | std::ios::ate};
@@ -49,34 +51,32 @@ int main(int argc, const char **argv)
         else
             osm_data = std::move(*data);
     }
-    
-    // TODO: Declare floats `start_x`, `start_y`, `end_x`, and `end_y` and get
-    // user input for these values using std::cin. Pass the user input to the
-    // RoutePlanner object below.
 
     // Build Model.
     RouteModel model{osm_data};
 
-    
-    
+#if ROUTE_BUTTON
     float start_x,start_y,end_x,end_y;
-    //std::cout<<"Please Input `start_x`, `start_y`, `end_x`, and `end_y` "<<std::endl;
-    //std::cin>>start_x>>start_y>>end_x>>end_y;
-    //std::cout<<"start_x="<<start_x<<"start_y="<<start_y<<"end_x="<<end_x<<"end_y="<<end_y;
-
+    //std::cout<<"Please Input `start_x`,`start_y`,`end_x`,and `end_y` "<<std::endl;
+    //std::cin>>start_x>>start_y>>end_x>>end_y; 
     // search the route
-    RoutePlanner route_planner{model,10,20,90,90};
-    route_planner.AStarSearch();
-    std::cout<<"Distance: "<<route_planner.GetDistance()<<"meters."<<std::endl;
 
+    start_x = 5;
+    start_y = 5;
+    end_x =60;
+    end_y =50;
+
+    RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
+    route_planner.AStarSearch();
+    std::cout<<"start_x="<<start_x<<"start_y="<<start_y<<"end_x="<<end_x<<"end_y="<<end_y;
+    //std::cout<<"Distance: "<<route_planner.GetDistance()<<"meters."<<std::endl;
+#endif
 
     // Perform search and render results.
-
-    //RoutePlanner route_planner{model, start_x, start_y, end_x, end_y};
-    //RoutePlanner route_planner{model, 10, 20, 90, 90};
     Render render{model};
 
-    auto display = io2d::output_surface{400, 400, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
+    auto display = io2d::output_surface{800, 800, io2d::format::argb32, io2d::scaling::none, io2d::refresh_style::fixed, 30};
+
     display.size_change_callback([](io2d::output_surface& surface){
         surface.dimensions(surface.display_dimensions());
     });
